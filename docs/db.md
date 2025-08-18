@@ -1,6 +1,6 @@
 # QuestionBank
 
-# USERS
+## USERS0
 
 -   name
 -   email
@@ -14,12 +14,12 @@
 -   url
 -   type (image)
 
-# DEPARTMENTS
+## DEPARTMENTS
 
 -   name (Computer Science,Information Technology, Cyber Security, Software Engineer)
 -   created_by
 
-# COURSES
+## COURSES
 
 -   title (Human Computer)
 -   code (CST1301)
@@ -27,7 +27,7 @@
 -   department_id (from above)
 -   created_by (the user id from backend)
 
-# QUESTIONS
+## QUESTIONS
 
 -   course_id
 -   type (essay,boolean(true/false),(multiple)multi-choice) [only objective and theory]
@@ -39,17 +39,19 @@
 -   created_by (the user id)
 -   approved_by (the user id)
 
-# GENERATED_QUESTIONS
+## GENERATED_QUESTIONS
 
 -   question_type (Test,Exam)
 -   year (2021/2022)
 -   course_id (SWE1309)
 -   level (100, 200, 300, 400)
--   semester (1,2)
+-   semester (first or second)
 -   objective_instruction (none)
--   objective_question_no (1, 20, 30, 50, 100)
+-   objective_total (1, 20, 30, 50, 100)
 -   objective_questions [] (from backend)
 -   theory_instruction (none)
--   theory_question_no (1, 3, 4, 5)
+-   theory_total (1, 3, 4, 5)
 -   theory_questions [] (from backend)
 -   created_by (the user id)
+
+## DOWNLOAD, PRINT, EXPORT, GENERATE [PDF]
