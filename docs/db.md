@@ -2,39 +2,53 @@
 
 # USERS
 
-- name
-- email
-- password
-- role (hod,lecturer)
+-   name
+-   email
+-   password
+-   role (hod,lecturer)
+-   added_by (the user id)
+
+## ASSETS
+
+-   name
+-   url
+-   type (image)
 
 # DEPARTMENTS
 
-- name (Computer Science,Information Technology, Cyber Security, Software Engineer)
+-   name (Computer Science,Information Technology, Cyber Security, Software Engineer)
+-   added_by
 
 # COURSES
 
-- title (Human Computer)
-- code (CST1301)
-- level (100)
-- department_id
+-   title (Human Computer)
+-   code (CST1301)
+-   level (100)
+-   department_id (from above)
+-   added_by (the user id from backend)
 
 # QUESTIONS
 
-- course_id
-- added_by
-- type (essay,boolean(true/false),(multiple)multi-choice)
-- options[] 1 to 5
+-   course_id
+-   type (essay,boolean(true/false),(multiple)multi-choice) [only objective and theory]
+-   question
+-   answer
+-   options[] array from 0 to 4
+-   status (pending, approved, rejected)
+-   asset_id
+-   added_by (the user id)
 
 # GENERATED_QUESTIONS
 
-- question_type (Test,Exam)
-- year (2021/2022)
-- course_id (SWE1309)
-- level (100, 200, 300, 400)
-- semester (1,2)
-- objective_instruction (none)
-- objective_question_no (1, 20, 30, 50, 100)
-- objective_questions []
-- theory_instruction (none)
-- theory_question_no (1, 3, 4, 5)
-- theory_questions []
+-   question_type (Test,Exam)
+-   year (2021/2022)
+-   course_id (SWE1309)
+-   level (100, 200, 300, 400)
+-   semester (1,2)
+-   objective_instruction (none)
+-   objective_question_no (1, 20, 30, 50, 100)
+-   objective_questions [] (from backend)
+-   theory_instruction (none)
+-   theory_question_no (1, 3, 4, 5)
+-   theory_questions [] (from backend)
+-   generated_by (the user id)
