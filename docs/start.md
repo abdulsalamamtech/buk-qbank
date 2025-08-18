@@ -21,6 +21,7 @@
 ```sh
     # Roles
     composer require spatie/laravel-permission
+    php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
     # Storage
     composer require cloudinary-labs/cloudinary-laravel
     # Docs

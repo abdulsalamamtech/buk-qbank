@@ -10,6 +10,7 @@ use App\Http\Resources\GeneratedQuestionResource;
 use App\Models\Activity;
 use App\Models\GeneratedQuestion;
 use App\Models\Question;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -148,13 +149,19 @@ class GeneratedQuestionController extends Controller
 
 
     /**
-     * Export specified resource.
+     * Export generated Pdf  specified resource.
      */
-    public function export(GeneratedQuestion $generatedQuestion)
+    public function generatePdf(GeneratedQuestion $generatedQuestion)
     {
         // transform data
         $response = new GeneratedQuestionResource($generatedQuestion);
         // return response
-        // return ApiResponse::success($response);          
+        // return ApiResponse::success($response);
+
+        $pdf = Pdf::loadView('pdf.generate-questions', [
+            'generatedQuestion' => $response,
+        ]);
+
+        return $pdf->download('exam-questions.pdf');        
     }    
 }

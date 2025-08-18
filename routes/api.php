@@ -31,9 +31,9 @@ Route::get('/', function () {
 })->name('api.home');
 
 
-
-
+// Load the API routes
 require __DIR__.'/api/auth.php';
+require __DIR__.'/api/app.php';
 require __DIR__.'/api/users.php';
 require __DIR__.'/api/guest.php';
 require __DIR__.'/api/admin.php';

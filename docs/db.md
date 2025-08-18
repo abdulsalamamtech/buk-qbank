@@ -1,6 +1,6 @@
 # QuestionBank
 
-## USERS0
+## USERS
 
 -   name
 -   email
