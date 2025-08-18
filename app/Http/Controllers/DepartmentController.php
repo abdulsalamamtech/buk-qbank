@@ -35,6 +35,7 @@ class DepartmentController extends Controller
         try {
             // validated response
             $data = $request->validated();
+            $data['created_by'] = ActorHelper::getUserId();
             $department = Department::create($data);
             
             // log activity
@@ -84,6 +85,7 @@ class DepartmentController extends Controller
         try {
             // validated response
             $data = $request->validated();
+            $data['updated_by'] = ActorHelper::getUserId();
             $department->update($data);
 
             // log activity
@@ -119,6 +121,8 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
+        $department->deleted_by = ActorHelper::getUserId();
+        $department->save();
         $department->delete();
         return ApiResponse::success([], 'department deleted');
     }
