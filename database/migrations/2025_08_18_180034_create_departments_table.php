@@ -20,9 +20,12 @@ return new class extends Migration
             // $table->string('contact_email')->nullable(); // Optional field for contact email
             // $table->string('contact_phone')->nullable(); // Optional field for contact phone number
             // $table->boolean('is_active')->default(true); // Field to indicate if the department is active
-            $table->string('created_by')->nullable(); // Field to track who created the department
-            $table->string('updated_by')->nullable(); // Field to track who last updated the department
-            $table->string('deleted_by')->nullable(); // Field to track who deleted
+            // Field to track who created the department
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('cascade');
+            // Field to track who last updated the department
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('cascade');
+            // Field to track who deleted
+            $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes(); // Soft delete field to allow for soft deletion of departments
         });
