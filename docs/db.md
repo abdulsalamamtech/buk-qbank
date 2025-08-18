@@ -6,7 +6,7 @@
 -   email
 -   password
 -   role (hod,lecturer)
--   added_by (the user id)
+-   created_by (the user id)
 
 ## ASSETS
 
@@ -17,7 +17,7 @@
 # DEPARTMENTS
 
 -   name (Computer Science,Information Technology, Cyber Security, Software Engineer)
--   added_by
+-   created_by
 
 # COURSES
 
@@ -25,7 +25,7 @@
 -   code (CST1301)
 -   level (100)
 -   department_id (from above)
--   added_by (the user id from backend)
+-   created_by (the user id from backend)
 
 # QUESTIONS
 
@@ -36,7 +36,8 @@
 -   options[] array from 0 to 4
 -   status (pending, approved, rejected)
 -   asset_id
--   added_by (the user id)
+-   created_by (the user id)
+-   approved_by (the user id)
 
 # GENERATED_QUESTIONS
 
@@ -51,4 +52,4 @@
 -   theory_instruction (none)
 -   theory_question_no (1, 3, 4, 5)
 -   theory_questions [] (from backend)
--   generated_by (the user id)
+-   created_by (the user id)
