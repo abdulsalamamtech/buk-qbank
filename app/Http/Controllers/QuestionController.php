@@ -43,7 +43,7 @@ class QuestionController extends Controller
             Activity::create([
                 'user_id' => ActorHelper::getUserId(),
                 'description' => 'created Question',
-                'logs' => $question
+                'log' => $question
             ]);
 
             // commit transaction
@@ -93,7 +93,7 @@ class QuestionController extends Controller
             Activity::create([
                 'user_id' => ActorHelper::getUserId(),
                 'description' => 'updated question',
-                'logs' => $question
+                'log' => $question
             ]);
 
             // commit transaction

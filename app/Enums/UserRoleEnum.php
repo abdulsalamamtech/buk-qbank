@@ -7,6 +7,8 @@ enum UserRoleEnum : string
     case SUPERADMIN = "super-admin";
     case ADMIN = 'admin';
     case USER = 'user';
+    case LECTURER = 'lecturer';
+
 
 
 
@@ -15,6 +17,7 @@ enum UserRoleEnum : string
             UserRoleEnum::SUPERADMIN => "super-admin",
             UserRoleEnum::ADMIN => 'admin',
             UserRoleEnum::USER => 'user',
+            UserRoleEnum::LECTURER => 'lecturer',
         };
     }
 

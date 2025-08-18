@@ -43,7 +43,7 @@ class CourseController extends Controller
             Activity::create([
                 'user_id' => ActorHelper::getUserId(),
                 'description' => 'created Course',
-                'logs' => $course
+                'log' => $course
             ]);
 
             // commit transaction
@@ -93,7 +93,7 @@ class CourseController extends Controller
             Activity::create([
                 'user_id' => ActorHelper::getUserId(),
                 'description' => 'updated course',
-                'logs' => $course
+                'log' => $course
             ]);
 
             // commit transaction

@@ -27,7 +27,9 @@
     # Docs
     composer require dedoc/scramble
     # Logs
-    composer require opcodesio/log-viewer
+    composer require opcodesio/log-viewer 
+    # pdf
+    
 
 ```
 

@@ -43,7 +43,7 @@ class DepartmentController extends Controller
             Activity::create([
                 'user_id' => ActorHelper::getUserId(),
                 'description' => 'created department',
-                'logs' => $department
+                'log' => $department
             ]);
 
             // commit transaction
@@ -93,7 +93,7 @@ class DepartmentController extends Controller
             Activity::create([
                 'user_id' => ActorHelper::getUserId(),
                 'description' => 'updated department',
-                'logs' => $department
+                'log' => $department
             ]);
 
             // commit transaction
