@@ -24,8 +24,8 @@ class StoreCourseRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'min:3', 'max:100'],
             'code' => ['required', 'string', 'min:3', 'max:7'],
-            'level' => ['required', 'string', 'min:4', 'max:4'],
-            'department_id' => ['required', 'exists:department,id'],
+            'level' => ['required', 'string', 'min:3', 'max:3'],
+            'department_id' => ['required', 'exists:departments,id'],
         ];
     }
 }

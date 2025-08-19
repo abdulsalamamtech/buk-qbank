@@ -35,6 +35,11 @@ Route::middleware(['auth:sanctum', 'role:super-admin'])
         Route::apiResource('generated-questions', GeneratedQuestionController::class);
 
         // Generate PDF route
+        // Route::get('generated-questions/{generatedQuestion}/pdf', [GeneratedQuestionController::class, 'generatePdf'])
+        //     ->name('generated-questions.pdf');
+    });
+
+
+            // Generate PDF route
         Route::get('generated-questions/{generatedQuestion}/pdf', [GeneratedQuestionController::class, 'generatePdf'])
             ->name('generated-questions.pdf');
-    });

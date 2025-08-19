@@ -26,7 +26,7 @@ class GeneratedQuestionController extends Controller
         // transform data
         $response = GeneratedQuestionResource::collection($generated_questions);
         // return response
-        return ApiResponse::success($response);        
+        return ApiResponse::success($response);
     }
 
     /**
@@ -43,21 +43,21 @@ class GeneratedQuestionController extends Controller
             // objective_total
             // 'objective_questions',
             $objective_total = $data['objective_total'];
-            $random_objective_questions = Question::inRandomOrder()->take($objective_total)->get();
-            $objective_questions = $random_objective_questions->pluck('id'); // Get only the IDs   
-            
+            $random_objective_questions = Question::where('type', 'objective')->inRandomOrder()->take($objective_total)->get();
+            $objective_questions = $random_objective_questions->pluck('id'); // Get only the IDs
+
             // selecting theory question from DB
             // theory_total
             // 'theory_questions', 
             $theory_total = $data['theory_total'];
-            $random_theory_questions = Question::inRandomOrder()->take($theory_total)->get();
-            $theory_questions = $random_theory_questions->pluck('id'); // Get only the IDs          
+            $random_theory_questions = Question::where('type', 'theory')->inRandomOrder()->take($theory_total)->get();
+            $theory_questions = $random_theory_questions->pluck('id'); // Get only the IDs
 
             $data['objective_questions'] = $objective_questions;
             $data['theory_questions'] = $theory_questions;
 
             $generated_question = GeneratedQuestion::create($data);
-            
+
             // log activity
             info('GeneratedQuestion created', [$generated_question]);
             Activity::create([
@@ -72,7 +72,6 @@ class GeneratedQuestionController extends Controller
             $response = new GeneratedQuestionResource($generated_question);
             // return response
             return ApiResponse::success($response);
-
         } catch (\Throwable $th) {
             //throw $th;
             DB::rollBack();
@@ -83,7 +82,7 @@ class GeneratedQuestionController extends Controller
             ]);
             // return error response
             return ApiResponse::error([], 'Generated question creation failed ' . $th->getMessage(), 500);
-        }        
+        }
     }
 
     /**
@@ -94,7 +93,7 @@ class GeneratedQuestionController extends Controller
         // transform data
         $response = new GeneratedQuestionResource($generatedQuestion);
         // return response
-        return ApiResponse::success($response);          
+        return ApiResponse::success($response);
     }
 
     /**
@@ -122,7 +121,6 @@ class GeneratedQuestionController extends Controller
             $response = new GeneratedQuestionResource($generatedQuestion);
             // return response
             return ApiResponse::success($response);
-
         } catch (\Throwable $th) {
             //throw $th;
             DB::rollBack();
@@ -133,7 +131,7 @@ class GeneratedQuestionController extends Controller
             ]);
             // return error response
             return ApiResponse::error([], 'generated question update failed ' . $th->getMessage(), 500);
-        }            
+        }
     }
 
     /**
@@ -153,15 +151,39 @@ class GeneratedQuestionController extends Controller
      */
     public function generatePdf(GeneratedQuestion $generatedQuestion)
     {
+
+        // 'question_type',
+        // 'year',
+        // 'course_id',
+        // 'level',
+        // 'semester',
+
+        // 'objective_instruction',
+        // 'objective_total',
+        // 'objective_questions',
+
+        // 'theory_instruction',
+        // 'theory_total',
+        // 'theory_questions',
+
+        // get data relationship
+        $generatedQuestion->load('course.department', 'course.createdBy');
         // transform data
         $response = new GeneratedQuestionResource($generatedQuestion);
+        $section_a = Question::whereIn('id', $response->objective_questions)->get();
+        $section_b = Question::whereIn('id', $response->theory_questions)->get();
+
         // return response
-        // return ApiResponse::success($response);
+        // return[ $response, $section_a, $section_b ];
 
         $pdf = Pdf::loadView('pdf.generate-questions', [
-            'generatedQuestion' => $response,
+            'q' => $response,
+            'section_a' => $section_a,
+            'section_b' => $section_b,
         ]);
 
-        return $pdf->download('exam-questions.pdf');        
-    }    
+        // return $pdf->download('exam-questions.pdf');        
+
+        return $pdf->stream('exam-questions.pdf');
+    }
 }

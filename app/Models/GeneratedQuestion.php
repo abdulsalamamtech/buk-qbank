@@ -64,5 +64,13 @@ class GeneratedQuestion extends Model
     public function deletedBy()
     {
         return $this->belongsTo(User::class, 'deleted_by');
-    }      
+    }   
+    
+    /**
+     * Get the course that deleted the department.
+     */
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id');
+    }       
 }

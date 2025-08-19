@@ -25,9 +25,9 @@ class UpdateQuestionRequest extends FormRequest
             'type' => ['required', 'string', 'in:objective,theory'],
             'question' => ['required', 'string'],
             'answer' => ['required', 'string'],
-            'options' => ['required', 'array'],
+            'options' => ['required_if:type,objective', 'array'],
             'status' => ['required', 'string', 'in:pending,approved,rejected'],
-            'course_id' => ['required', 'string', 'exists:courses,id'],            
+            'course_id' => ['required', 'integer', 'exists:courses,id'],            
         ];
     }
 }

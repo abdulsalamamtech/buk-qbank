@@ -42,4 +42,12 @@ class Course extends Model
     {
         return $this->belongsTo(User::class, 'deleted_by');
     } 
+
+    /**
+     * Get the department that deleted the department.
+     */
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }       
 }
