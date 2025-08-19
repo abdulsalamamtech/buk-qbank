@@ -21,6 +21,7 @@ jobs:
       - name: Deploy to Staging Server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_IP }} << 'EOF'
+            # htdocs/bukqbank.amtechdigital.com/buk-qbank
             cd ${{ secrets.APP_PATH }} # Navigate to the staging folder
 
             git pull origin main  # Pull the latest changes from main branch
