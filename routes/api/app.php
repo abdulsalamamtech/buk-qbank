@@ -41,6 +41,6 @@ Route::middleware(['auth:sanctum'])
     });
 
 
-            // Generate PDF route
-        Route::get('generated-questions/{generatedQuestion}/pdf', [GeneratedQuestionController::class, 'generatePdf'])
-            ->name('generated-questions.pdf');
+    // Generate PDF route
+    Route::get('generated-questions/{generatedQuestion}/pdf', [GeneratedQuestionController::class, 'generatePdf'])
+        ->name('generated-questions.pdf');
