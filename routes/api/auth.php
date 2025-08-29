@@ -5,8 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::prefix('api')
-    ->name('api.')
+Route::name('api.')
     ->group(function () {
         // Guest user
         Route::post('register', [AuthController::class, 'register']);
