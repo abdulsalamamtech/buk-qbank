@@ -24,7 +24,7 @@ class QuestionController extends Controller
         // transform data
         $response = QuestionResource::collection($questions);
         // return response
-        return ApiResponse::success($response);        
+        return ApiResponse::success($response, 'successful', 200, $questions);
     }
 
     /**
